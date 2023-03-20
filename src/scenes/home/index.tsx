@@ -8,7 +8,7 @@ import SponsorForbes from "@/assets/SponsorForbes.png";
 import SponsorFortune from "@/assets/SponsorFortune.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
-
+  
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
@@ -23,7 +23,18 @@ const Home = ({ setSelectedPage }: Props) => {
         className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
         onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
       >
-        {/* MAIN HEADER */}
+        <motion.div
+            className="md:-mt-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0 },
+            }}
+          >
+           {/* MAIN HEADER */}
         <div className="z-10 mt-32 md:basis-3/5">
           {/* HEADINGS */}
           <motion.div
@@ -82,6 +93,8 @@ const Home = ({ setSelectedPage }: Props) => {
         >
           <img alt="home-pageGraphic" src={HomePageGraphic} />
         </div>
+
+        </motion.div> 
       </motion.div>
 
       {/* SPONSORS */}
